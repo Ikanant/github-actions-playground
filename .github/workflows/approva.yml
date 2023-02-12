@@ -1,2 +1,15 @@
 name: Team approval workflow
 on: pull_request_review
+
+jobs:
+  labelWhenApproved:
+    runs-on: ubuntu-latest
+    steps:
+      # Got it from https://github.com/marketplace/actions/set-label-when-approved
+      - name: Set Label When Approved
+        uses: TobKed/label-when-approved-action@v1.3
+        with:
+          # The GITHUB_TOKEN secret of the repository
+          token: ${{ secrets.GITHUB_TOKEN }}
+          # A label to be checked/added/removed
+          label: "approved"
